@@ -3,6 +3,12 @@ body
 	background-color:#505050;
 }
 
+a
+{
+	color:black;
+	text-decoration:none;
+}
+
 div.scroller
 {
 	width:80%;
@@ -22,6 +28,29 @@ div.product
 {
 	border: 1px solid black;
 	position:relative;
+}
+
+div.scrollbar 
+{
+	border: 12px solid white;
+	background-color:white;
+	border-radius:15px;
+	width:75%;
+	margin:auto;
+	position:absolute;
+	left:250px;
+	top:140px;
+	overflow: auto;
+	white-space: nowrap;
+}
+
+div.scrollbar img
+{
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding: 14px;
+	text-decoration: none;
 }
 
 .image
