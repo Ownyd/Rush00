@@ -31,13 +31,24 @@ Categories :
 </div> 
 </div>
 <div class="scrollbar">
-<img src="resources/games/ps4/1.jpeg">
-<img src="resources/games/ps4/1.jpeg">
-<img src="resources/games/ps4/1.jpeg">
-<img src="resources/games/ps4/1.jpeg">
-<img src="resources/games/ps4/1.jpeg">
-<img src="resources/games/ps4/1.jpeg">
-<img src="resources/games/ps4/1.jpeg">
+<img class="miniature" src="resources/games/xbox/4.jpeg">
+<img class="miniature" src="resources/games/switch/5.jpeg">
+<img class="miniature" src="resources/games/ps4/11.jpeg">
+<img class="miniature" src="resources/games/xbox/5.jpeg">
+<img class="miniature" src="resources/games/ps4/2.jpeg">
+<img class="miniature" src="resources/games/switch/2.jpeg">
+<img class="miniature" src="resources/games/ps4/5.jpeg">
+<img class="miniature" src="resources/games/xbox/2.jpeg">
+<img class="miniature" src="resources/games/ps4/9.jpeg">
+<img class="miniature" src="resources/games/xbox/11.jpeg">
+<img class="miniature" src="resources/games/switch/4.jpeg">
+<img class="miniature" src="resources/games/xbox/9.jpeg">
+<img class="miniature" src="resources/games/switch/9.jpeg">
+<img class="miniature" src="resources/games/ps4/4.jpeg">
+<img class="miniature" src="resources/games/switch/1.jpeg">
+<img class="miniature" src="resources/games/ps4/1.jpeg">
+<img class="miniature" src="resources/games/xbox/1.jpeg">
+<img class="miniature" src="resources/games/switch/11.jpeg">
 </div>
-
+<div class="footer"><font face="Georgia">Conditions générales de vente<br />Vos informations personnelles<br />    Cookies et Publicité sur Internet<br />    ©2018 tlux,gearcenc </font>
 </html>
