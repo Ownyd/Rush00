@@ -8,11 +8,12 @@
 	<a href="index.php">
 		<img src="resources/logo.png"></a>
 			<div id="panier">
-		<img width="50%" height="100px"src="resources/panier.png"><br />Mon panier</a>
+		<img width="50%" height="100px"src="resources/panier.png"><br />Mon panier
 		</div>
+	<a href="login.php">
 	<div id="account">
-		<img width="50%" height="100px"src="resources/avatar.png"><br />Connexion</a>
-		</div>
+		<img width="50%" height="100px"src="resources/avatar.png"><br />Connexion
+		</div></a>
 
 	</div>
 	<div id="categories">
