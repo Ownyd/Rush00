@@ -35,7 +35,6 @@ div.scroller
 	text-align: center;
 	border-top:1px solid black;
 }
-
 div.product
 {
 	border: 1px solid black;
@@ -51,8 +50,8 @@ div.scrollbar
 	height:270px;
 	margin-top:20px;
 	position:absolute;
-	left:350px;
-	top:140px;
+	left:300px;
+	top:150px;
 	overflow: auto;
 	white-space: nowrap;
 }
@@ -122,9 +121,10 @@ img.miniature
 #logo
 {
 	border: 2px solid black;
+	padding:5px;
 	border-radius:15px;
 	background-color:white;
-	text-align:center;
+	text-align:left;
 	height:120px;
 }
 
@@ -138,22 +138,29 @@ img.miniature
 
 #account
 {
-	padding:10px;
-	text-align:right;
+	position:absolute;
+	height:119px;
+	left:80%;
+	width:10%;
+	text-align:center;
 	display:inline-block;
-	border: 2px solid black;
-	border-radius:15px;
+	border-left: 2px solid black;
+	border-right: 2px solid black;
+	background-color:white;
+}
+#panier
+{
+	position:absolute;
+	left:70%;
+	height:119px;
+	width:10%;
+	text-align:center;
+	display:inline-block;
+	border-right: 2px solid black;
+	border-left: 2px solid black;
 	background-color:white;
 }
 
-#panier
-{
-	width:100px;
-	height:100px;
-	padding:10px;
-	text-align:right;
-	display:inline-block;
-}
 
 #categories
 {

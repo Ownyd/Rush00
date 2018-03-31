@@ -7,12 +7,13 @@
 	<div id="logo">
 	<a href="index.php">
 		<img src="resources/logo.png"></a>
-		<div id="account">
-			Connexion Inscription
+			<div id="panier">
+		<img width="50%" height="100px"src="resources/panier.png"><br />Mon panier</a>
 		</div>
-		<div id="account">
-			Mon panier
+	<div id="account">
+		<img width="50%" height="100px"src="resources/avatar.png"><br />Connexion</a>
 		</div>
+
 	</div>
 	<div id="categories">
 Categories :
