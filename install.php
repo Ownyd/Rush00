@@ -54,4 +54,5 @@ array(cat => ["plateforme"], name => "Super Bomberman", img => "resources/games/
 array(cat => ["sport", "action"], name => "Rocket League", img => "resources/games/switch/13.jpeg", prix => "26.99", type => ["switch"])
 );
 file_put_contents("data/games",serialize($games));
+		header("Location: index.php");
 ?>

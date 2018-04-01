@@ -45,7 +45,7 @@ foreach($tab = unserialize(file_get_contents("data/games")) as $elem)
 			"</div>".
 			"<div class='namegame'>".
 			"$elem[name]");
-		foreach($elem["cat"] as $elem2);
+		foreach($elem["cat"] as $elem2)
 		echo(" ($elem2) ");
 			echo("</div></div>");
 

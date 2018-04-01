@@ -41,9 +41,14 @@ foreach($tab = unserialize(file_get_contents("data/games")) as $elem)
 		echo("<div class='product'>".
 			"<img class='image' src='$elem[img]'>".
 			"<div class='middle'>".
-			"<div class='text'>ajouter au panier </div>".
+			"<div class='text'>$elem[prix]€</div>".
 			"</div>".
-			"</div>");
+			"<div class='namegame'>".
+			"$elem[name]");
+		foreach($elem["cat"] as $elem2)
+		echo(" ($elem2) ");
+		echo("</div></div>");
+
 	}
 }
 ?>
