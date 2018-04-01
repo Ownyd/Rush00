@@ -28,11 +28,11 @@
 
 	if ($_GET[error] === "login")
 	{
-		echo("Wrong login<br />\n");
+		echo("<div class='wrongauth'>Wrong login</div><br />\n");
 	}
 	else if ($_GET[error] === "passwd")
 	{
-		echo("Wrong password<br />\n");
+		echo("<div class='wrongauth'>Wrong password</div><br />\n");
 	}
 ?>
 <head>
@@ -40,6 +40,9 @@
 	<link rel="stylesheet" href="index.css">
 </head>
 <body>
+<a href="index.php"><div class="accueuil">
+Retourner a l'accueuil
+</div></a>
 <div class="login">
 <form method='post'>
 	Identifiant :<br />
