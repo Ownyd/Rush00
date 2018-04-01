@@ -15,6 +15,12 @@
 		$_SESSION[accounts] = unserialize(file_get_contents("data/accounts"));
 	$key = auth($_POST[login]);
 
+	if ($_SESSION[accounts][$_SESSION[user_key]] != NULL)
+	{
+		header("Location: index.php");
+		exit;
+	}
+
 	if ($_POST[login] !== "" && $_POST[passwd] !== "" && $_POST[passwdconfirm] === $_POST[passwd] && $_POST[submit] === "VALIDER" && $key === false)
 	{
 		$_SESSION[accounts][] = [login => $_POST[login], passwd => hash("sha512", $_POST[passwd]), status => "user"];
@@ -24,27 +30,27 @@
 	}
 	if ($_POST[submit] === "VALIDER")
 	{
-echo("<div class='reg_error'>");
+		echo("<div class='reg_error'>");
 		if ($_POST[login] === "")
 		{
-			echo("No login<br />\n");
+			echo("Identifiant manquant<br />\n");
 		}
 		else if (auth($_POST[login]) !== false)
 		{
-			echo("Login Taken<br />\n");
+			echo("Identifiant deja pris<br />\n");
 			$_POST[login] = "";
 		}
 		if ($_POST[passwd] === "")
 		{
-			echo("No password<br />\n");
+			echo("Mot de passe manquant<br />\n");
 		}
 		if ($_POST[passwdconfirm] === "")
 		{
-			echo("No password confirmation<br />\n");
+			echo("Confirmation de mot de passe manquante<br />\n");
 		}
 		else if ($_POST[passwd] !== $_POST[passwdconfirm])
 		{
-			echo("Password and confirmation don't match<br />\n");
+			echo("Confirmation de mot de passe erronee<br />\n");
 			$_POST[passwdconfirm] = "";
 		}
 	}

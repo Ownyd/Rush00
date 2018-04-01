@@ -15,6 +15,12 @@
 		$_SESSION[accounts] = unserialize(file_get_contents("data/accounts"));
 	$key = auth($_POST[login]);
 
+	if ($_SESSION[accounts][$_SESSION[user_key]] != NULL)
+	{
+		header("Location: index.php");
+		exit;
+	}
+
 	if ($_POST[login] !== "" && $_POST[passwd] !== "" && $_POST[submit] === "VALIDER" && hash("sha512", $_POST[passwd]) === $_SESSION[accounts][$key][passwd])
 	{
 		$_SESSION[user_key] = $key;
@@ -27,20 +33,20 @@
 		echo("<div class='wrongauth'>\n");
 		if ($_POST[login] === "")
 		{
-			echo("No login<br />\n");
+			echo("Identifiant manquant<br />\n");
 		}
 		else if ($key === false)
 		{
-			echo("Login doesn't exist<br />\n");
+			echo("L'identifiant choisi n'existe pas<br />\n");
 			$_POST[login] = NULL;
 		}
 		if ($_POST[passwd] === "")
 		{
-			echo("No password<br />\n");
+			echo("Mot de passe manquant<br />\n");
 		}
 		else if ($_POST[login] !== "" && hash("sha512", $_POST[passwd]) !== $_SESSION[accounts][$key][passwd])
 		{
-			echo("Wrong password<br />\n");
+			echo("Mot de passe errone<br />\n");
 		}
 		echo("</div>\n");
 	}

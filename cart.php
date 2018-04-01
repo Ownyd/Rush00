@@ -43,7 +43,7 @@ if (!isset($_SESSION[accounts][$_SESSION[user_key]]))
 }
 else
 {
-echo("<div id='account'> Bonjour, ".$_SESSION[accounts][$_SESSION[user_key]][login]." <br/><br /><br /> <a href='logout.php'>Se deconnecter</div></a>");
+echo("<div id='account'> Bonjour, ".$_SESSION[accounts][$_SESSION[user_key]][login]." <br/><a href='edit.php'><button>Modifier mon profil</button></a><br /><a href='logout.php'><button>Se deconnecter</button></div></a>");
 }
 ?>
 </div>
@@ -134,10 +134,10 @@ foreach($_SESSION[cart] as $elem)
 echo("Prix total : ".$prix."€  <br />");
 if (!isset($_SESSION[accounts][$_SESSION[user_key]]))
 {
-echo("  Merci de vous connecter pour continuer");
+	echo("Merci de <a href='login.php'><button>vous connecter</button></a> pour continuer<br />");
 }
 else
-	echo ("Passer votre commande");
-echo("<br /><a href='reset.php'>Vider mon panier</a>");
+	echo ("Passer votre commande<br />");
+echo("<a href='empty_cart.php'><button>Vider mon panier</button></a>");
 ?>
 </div>
