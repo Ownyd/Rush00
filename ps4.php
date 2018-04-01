@@ -33,78 +33,25 @@ Categories :
 </div> <br />
 </div>
 <div class="scroller">
-	<div class="product">
-	<img class="image" src="resources/games/ps4/1.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/ps4/2.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/ps4/3.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier</div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/ps4/4.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/ps4/5.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/ps4/6.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/ps4/7.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-	<div class="product">
-	<img class="image" src="resources/games/ps4/8.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/ps4/9.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/ps4/10.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier</div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/ps4/11.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/ps4/12.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
+<?php
+foreach($tab = unserialize(file_get_contents("data/games")) as $key => $elem)
+{
+	if (array_search("ps4", $elem["type"]) !== false)
+	{
+		echo("<a href='produit.php?name=$key'><div class='product'>".
+			"<img class='image' src='$elem[img]'>".
+			"<div class='middle'>".
+			"<div class='text'>$elem[prix]€</div>".
+			"</div></a>".
+			"<div class='namegame'>".
+			"$elem[name]");
+		foreach($elem["cat"] as $elem2)
+			echo(" ($elem2) ");
+		echo("</div></div>");
+
+	}
+}
+?>
 </div>
 
 </html>

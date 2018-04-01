@@ -64,7 +64,7 @@ J'ai deja un compte
 <div class="register">
 <form method='post'>
 	<?php
-		echo("Nom de compte :<br /><input type='text' name='login' value='$_POST[login]' />".
+		echo("Identifiant :<br /><input type='text' name='login' value='$_POST[login]' />".
 			"Mot de passe :<br /><input type='password' name='passwd' value='$_POST[passwd]' />".
 			"Confirmation :<br /><input type='password' name='passwdconfirm' value='$_POST[passwdconfirm]' /><p>".
 			"<input type='submit' class='button' name='submit' value='VALIDER' /></p>");

@@ -53,6 +53,9 @@
 <a href="index.php"><div class="accueuil">
 Retourner a l'accueuil
 </div></a>
+<a href="register.php"><div class="dejacompte">
+Creer un nouveau compte
+</div></a>
 <div class="login">
 <form method='post'>
 <?php
@@ -64,8 +67,4 @@ Retourner a l'accueuil
 ?>
 </form>
 </div>
-<a href="register.php">
-<div class="createaccount">
-	Créer un compte<br />
-</div><a/>
 </body>

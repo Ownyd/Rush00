@@ -33,91 +33,24 @@ Categories :
 </div> <br />
 </div>
 <div class="scroller">
-	<div class="product">
-	<img class="image" src="resources/games/switch/1.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/switch/2.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/switch/3.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier</div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/switch/4.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/switch/5.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/switch/6.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/switch/7.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-	<div class="product">
-	<img class="image" src="resources/games/switch/8.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/switch/9.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/switch/10.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier</div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/switch/11.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/switch/12.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/switch/13.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/switch/14.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
+<?php
+foreach($tab = unserialize(file_get_contents("data/games")) as $key => $elem)
+{
+	if (array_search("switch", $elem["type"]) !== false)
+	{
+		echo("<a href='produit.php?name=$key'><div class='product'>".
+			"<img class='image' src='$elem[img]'>".
+			"<div class='middle'>".
+			"<div class='text'>$elem[prix]€</div>".
+			"</div></a>".
+			"<div class='namegame'>".
+			"$elem[name]");
+		foreach($elem["cat"] as $elem2)
+		echo(" ($elem2) ");
+			echo("</div></div>");
 
+	}
+}
+?>
 </div>
-
 </html>
