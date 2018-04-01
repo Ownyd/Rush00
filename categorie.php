@@ -7,8 +7,10 @@
 	<div id="logo">
 	<a href="index.php">
 		<img src="resources/logo.png"></a>
+	<a href="cart.php">
 			<div id="panier">
 		<img width="50%" height="100px"src="resources/panier.png"><br />Mon panier
+</a>
 		</div>
 
 <a href="login.php">

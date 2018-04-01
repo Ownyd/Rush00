@@ -1,5 +1,24 @@
 <?php
 	session_start();
+	if ($_GET[submit] === "VALIDER")
+	{
+		if ($_GET[quantite] !== "" && $_GET[quantite] >= 1)
+		{
+			if (isset($_SESSION[cart]))
+			foreach($_SESSION[cart] as $key => $elem)
+			{
+				if (array_search($_GET[name], $elem))	
+				{
+					$_SESSION[cart][$key][quant] += $_GET[quantite];
+					header("Location: cart.php");
+					exit;
+				}
+			}
+			$_SESSION[cart][] = [key => $_GET[name], quant => $_GET[quantite]];
+			header("Location: cart.php");
+			exit;
+		}
+	}
 ?>
 
 <html>
@@ -11,8 +30,10 @@
 	<div id="logo">
 	<a href="index.php">
 		<img src="resources/logo.png"></a>
+	<a href="cart.php">
 			<div id="panier">
 		<img width="50%" height="100px"src="resources/panier.png"><br />Mon panier
+</a>
 		</div>
 
 <a href="login.php">
@@ -74,20 +95,16 @@ Divers
 </div>
 </div>
 </div>
-<?php
-	session_start();
-?>
 <div class="produit">
 <div class="boitier">
 <?php
 $tab = unserialize(file_get_contents("data/games"));
 	echo("<img src='".$tab[$_GET[name]][img]."'>");
-
-	$_SESSION[cart][] = [key => 26, quant => 2];
 ?>
 </div>
 <div class="description">
 <?php
+	echo($tab[$_GET[name]][name]."<br />");
 	echo(" Prix :".$tab[$_GET[name]][prix]." Euros<br />");
 	echo(" Categories :"); 
 	foreach($tab[$_GET[name]][cat] as $elem)
@@ -99,8 +116,8 @@ $tab = unserialize(file_get_contents("data/games"));
 	Acheter : <br /><br />Quantite :
 <?php
 		echo("<input type='number' name='quantite' value='quantite' /> <br />".
-			"<input type='hidden' name='name' value='$_GET[name]'".
-			"<input type='submit' name='submit' value='VALIDER'");
+			"<input type='hidden' name='name' value='$_GET[name]'/>".
+			"<input type='submit' name='submit' value='VALIDER'/>");
 ?>
    </p> </font>
 </form>
