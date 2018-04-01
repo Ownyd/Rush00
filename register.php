@@ -3,17 +3,19 @@
 
 	function	auth($login)
 	{
-		foreach ($_SESSION[accounts] as $elem)
+		foreach ($_SESSION[accounts] as $key => $elem)
 		{
 			if ($elem[login] === $login)
-				return (true);
+				return ($key);
 		}
 		return(false);
 	}
 
 	if (!$_SESSION[accounts])
 		$_SESSION[accounts] = unserialize(file_get_contents("data/accounts"));
-	if ($_POST[login] && $_POST[passwd] && $_POST[passwdconfirm] === $_POST[passwd] && $_POST[submit] === "VALIDER" && !auth($_POST[login]))
+	$key = auth($_POST[login]);
+
+	if ($_POST[login] !== "" && $_POST[passwd] !== "" && $_POST[passwdconfirm] === $_POST[passwd] && $_POST[submit] === "VALIDER" && $key === false)
 	{
 		$_SESSION[accounts][] = [login => $_POST[login], passwd => hash("sha512", $_POST[passwd]), status => "user"];
 		file_put_contents("data/accounts", serialize($_SESSION[accounts]));
@@ -23,20 +25,20 @@
 	if ($_POST[submit] === "VALIDER")
 	{
 echo("<div class='reg_error'>");
-		if (!$_POST[login])
+		if ($_POST[login] === "")
 		{
 			echo("No login<br />\n");
 		}
-		else if (auth($_POST[login]))
+		else if (auth($_POST[login]) !== false)
 		{
 			echo("Login Taken<br />\n");
 			$_POST[login] = "";
 		}
-		if (!$_POST[passwd])
+		if ($_POST[passwd] === "")
 		{
 			echo("No password<br />\n");
 		}
-		if (!$_POST[passwdconfirm])
+		if ($_POST[passwdconfirm] === "")
 		{
 			echo("No password confirmation<br />\n");
 		}

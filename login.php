@@ -15,7 +15,7 @@
 		$_SESSION[accounts] = unserialize(file_get_contents("data/accounts"));
 	$key = auth($_POST[login]);
 
-	if ($_POST[login] && $_POST[passwd] && $_POST[submit] === "VALIDER" && hash("sha512", $_POST[passwd]) === $_SESSION[accounts][$key][passwd])
+	if ($_POST[login] !== "" && $_POST[passwd] !== "" && $_POST[submit] === "VALIDER" && hash("sha512", $_POST[passwd]) === $_SESSION[accounts][$key][passwd])
 	{
 		$_SESSION[user_key] = $key;
 		header("Location: index.php");
@@ -38,7 +38,7 @@
 		{
 			echo("No password<br />\n");
 		}
-		else if ($_POST[login] !== "" && hash("sha512", $_POST[passwd]) !== $_SESSION[account][$key][passwd])
+		else if ($_POST[login] !== "" && hash("sha512", $_POST[passwd]) !== $_SESSION[accounts][$key][passwd])
 		{
 			echo("Wrong password<br />\n");
 		}

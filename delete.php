@@ -17,7 +17,7 @@
 	if ($_SESSION[accounts][$_SESSION[user_key]][status] !== "admin")
 		exit;
 
-	if ($_POST[login] && $_POST[submit])
+	if ($_POST[login] !== "" && $_POST[submit] === "OK")
 	{
 		if ($key = auth($_POST[login]))
 		{
@@ -31,7 +31,7 @@
 
 	if ($_POST[submit] === "OK")
 	{
-		if (!$_POST[login])
+		if ($_POST[login] === "OK")
 		{
 			echo("No login<br />\n");
 		}
