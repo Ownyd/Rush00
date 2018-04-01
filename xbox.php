@@ -33,78 +33,19 @@ Categories :
 </div> <br />
 </div>
 <div class="scroller">
-	<div class="product">
-	<img class="image" src="resources/games/xbox/1.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/xbox/2.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/xbox/3.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier</div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/xbox/4.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/xbox/5.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/xbox/6.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/xbox/7.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-	<div class="product">
-	<img class="image" src="resources/games/xbox/8.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/xbox/9.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/xbox/10.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier</div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/xbox/11.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-<div class="product">
-	<img class="image" src="resources/games/xbox/12.jpeg">
-	<div class="middle">
-	<div class="text">ajouter au panier </div>
-	</div>
-	</div>
-</div>
-
+<?php
+foreach($tab = unserialize(file_get_contents("data/games")) as $elem)
+{
+	if (array_search("xbox", $elem["type"]) !== false)
+	{
+		echo("<div class='product'>".
+			"<img class='image' src='$elem[img]'>".
+			"<div class='middle'>".
+			"<div class='text'>ajouter au panier </div>".
+			"</div>".
+			"</div>");
+	}
+}
+?>
+</div>;
 </html>

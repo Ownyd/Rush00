@@ -44,8 +44,8 @@ Categories :
 </div>
 <div class="scrollbar">
 <?php
-foreach($tab = unserialize(file_get_contents("data/xbox")) as $elem)
-	echo("<img class='miniature' src='$elem'>");
+foreach($tab = unserialize(file_get_contents("data/games")) as $elem)
+	echo("<img class='miniature' src='$elem[img]'>");
 ?>
 </div>
 <div class="footer"><font face="Georgia">Conditions générales de vente<br />Vos informations personnelles<br />    Cookies et Publicité sur Internet<br />    ©2018 tlux,gearcenc </font>
