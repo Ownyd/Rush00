@@ -4,18 +4,24 @@ if (!$_SESSION[accounts])
 		$_SESSION[accounts] = unserialize(file_get_contents("data/accounts"));
 	if ($_GET[submit] === "VALIDER")
 	{
-		if ($_GET[quantite] !== "" && $_GET[quantite] >= 1)
+		if ($_GET[quantite] === "" || $_GET[quantite] >= 1)
 		{
 			if (isset($_SESSION[cart]))
 			foreach($_SESSION[cart] as $key => $elem)
 			{
 				if ($_GET[name] === $elem[key])	
 				{
+					if ($_GET[quantite] === "")
+					$_SESSION[cart][$key][quant] += 1;
+					else
 					$_SESSION[cart][$key][quant] += $_GET[quantite];
 					header("Location: cart.php");
 					exit;
 				}
 			}
+					if ($_GET[quantite] === "")
+			$_SESSION[cart][] = [key => $_GET[name], quant => 1];
+					else
 			$_SESSION[cart][] = [key => $_GET[name], quant => $_GET[quantite]];
 			header("Location: cart.php");
 			exit;
