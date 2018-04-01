@@ -19,7 +19,7 @@
 		exit;
 	}
 
-	if ($_POST[login] && $_POST[passwd] && $_POST[submit] === "OK")
+	if ($_POST[login] && $_POST[passwd] && $_POST[submit] === "VALIDER")
 	{
 		$_SESSION[user_key] = auth($_POST[login], $_POST[passwd]);
 		header("Location: index.php");
@@ -28,15 +28,32 @@
 
 	if ($_GET[error] === "login")
 	{
-		echo("Wrong login<br />\n");
+		echo("<div class='wrongauth'>Wrong login</div><br />\n");
 	}
 	else if ($_GET[error] === "passwd")
 	{
-		echo("Wrong password<br />\n");
+		echo("<div class='wrongauth'>Wrong password</div><br />\n");
 	}
 ?>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+<a href="index.php"><div class="accueuil">
+Retourner a l'accueuil
+</div></a>
+<div class="login">
 <form method='post'>
-	<?php echo("<input type='text' name='login' value='$_GET[login]' />");?>
-	<input type='password' name='passwd' />
-	<input type='submit' name='submit' value='OK' />
+	Identifiant :<br />
+	<?php echo("<input type='text' name='login' value='$_GET[login]' />");?><br />
+	Mot de passe :<br />
+	<input type='password' name='passwd' /><p>
+	<input class="button"  type='submit' name='submit' value='VALIDER' /></p>
 </form>
+</div>
+<a href="register.php">
+<div class="createaccount">
+	Créer un compte<br />
+</div><a/>
+</body>
