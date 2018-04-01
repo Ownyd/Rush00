@@ -9,7 +9,7 @@ if (!$_SESSION[accounts])
 			if (isset($_SESSION[cart]))
 			foreach($_SESSION[cart] as $key => $elem)
 			{
-				if (array_search($_GET[name], $elem))	
+				if ($_GET[name] === $elem[key])	
 				{
 					$_SESSION[cart][$key][quant] += $_GET[quantite];
 					header("Location: cart.php");
