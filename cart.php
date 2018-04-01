@@ -1,7 +1,8 @@
 <?php
 	session_start();
+if (!$_SESSION[accounts])
+		$_SESSION[accounts] = unserialize(file_get_contents("data/accounts"));
 ?>
-
 <html>
 	<head>
 		<title>Index</title>
@@ -14,15 +15,24 @@
 	<a href="cart.php">
 			<div id="panier">
 		<img width="50%" height="100px"src="resources/panier.png"><br />Mon panier
-		</div>
 </a>
+		</div>
+<?php
+if (!isset($_SESSION[accounts][$_SESSION[user_key]]))
+{
+	echo("<a href='login.php'>".
+			"<div id='account'>".
+					"<img width='50%' height='100px'src='resources/avatar.png'><br />Connexion".
+							"</div></a>");
+}
+else
+{
 
-<a href="login.php">
-	<div id="account">
-		<img width="50%" height="100px"src="resources/avatar.png"><br />Connexion
-		</div></a>
+	echo("<div id='account'> Bonjour, ".$_SESSION[accounts][$_SESSION[user_key]][login]." </div>");
 
-	</div>
+}
+?>
+</div>
 	<div id="categories">
 Categories :
 <br />
