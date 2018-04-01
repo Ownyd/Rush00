@@ -9,7 +9,8 @@
 	if ($_SESSION[accounts][$_SESSION[user_key]][status] !== "admin")
 		exit;
 
-	echo("<form action='modif_game.php' method='post'>\n".
+	echo("<a href='admin.php'><input type='submit' value='Retourner a l accueil administrateur' /></a><br />\n".
+		"<form action='modif_game.php' method='post'>\n".
 		"<input type='submit' name='submit' value='OK' /><br />");
 	foreach ($_SESSION[games] as $key => $elem)
 	{

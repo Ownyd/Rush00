@@ -26,7 +26,9 @@
 		}
 		$_SESSION[games][] = [name => $_POST[title], prix => $_POST[price], img => $_POST[link],
 			type => $type, cat => $cat];
-		file_put_contents("data/games", serialise($_SESSION[games]));
+		file_put_contents("data/games", serialize($_SESSION[games]));
+		header("Location: admin.php");
+		exit;
 	}
 
 	if ($_POST[submit] === "OK")
@@ -56,7 +58,8 @@
 		echo("</div>\n");
 	}
 
-	echo("<form method='post'>\n".
+	echo("<a href='admin.php'><input type='submit' value='Retourner a l accueil administrateur' /></a><br />\n".
+		"<form method='post'>\n".
 		"Nom:<br />\n".
 		"<input type='text' name='title' value='$_POST[title]' /><br />\n".
 		"Prix:<br />\n".

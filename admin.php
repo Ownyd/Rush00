@@ -6,4 +6,7 @@
 
 	if ($_SESSION[accounts][$_SESSION[user_key]][status] !== "admin")
 		exit;
+
+	echo("<a href='add_game.php'><input type='submit' value='Ajouter un produit' /></a><br />\n".
+		"<a href='game_list.php'><input type='submit' value='Modifier/Supprimer un produit' /></a><br />\n");
 ?>

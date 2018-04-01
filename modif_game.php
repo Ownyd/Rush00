@@ -12,7 +12,7 @@
 	if ($_POST[title] !== "" && $_POST[price] !== "" && $_POST[link] !== "" &&
 		($_POST[xbox] || $_POST[ps4] || $_POST["switch"]) &&
 		($_POST[fps] || $_POST[survie] || $_POST[action] || $_POST[sport] ||
-		$_POST[plateforme] || $_POST[combat] || $_POST[divers]) && $_POST[submit] === "OK")
+		$_POST[plateforme] || $_POST[combat] || $_POST[divers]) && $_POST[submit] === "MODIFIER")
 	{
 		foreach ([xbox, ps4, "switch"] as $elem)
 		{
@@ -27,23 +27,20 @@
 		$_SESSION[games][$_POST[key]] = [name => $_POST[title], prix => $_POST[price], img => $_POST[link],
 			type => $type, cat => $cat];
 		file_put_contents("data/games", serialize($_SESSION[games]));
+		header("Location: game_list.php");
+		exit;
+	}
+	else if ($_POST[submit] === "SUPPRIMER")
+	{
+		unset($_SESSION[games][$_POST[key]]);
+		file_put_contents("data/games", serialize($_SESSION[games]));
+		header("Location: game_list.php");
+		exit;
 	}
 
-	if ($_POST[submit] === "OK")
+	if ($_POST[submit] === "MODIFIER")
 	{
 		echo("<div class='wrongauth'>\n");
-		if ($_POST[title] === "")
-		{
-			echo("Nom manquant<br />\n");
-		}
-		if ($_POST[price] === "")
-		{
-			echo("Prix manquant<br />\n");
-		}
-		if ($_POST[link] === "")
-		{
-			echo("Image manquante<br />\n");
-		}
 		if (!($_POST[xbox] || $_POST[ps4] || $_POST["switch"]))
 		{
 			echo("Aucun type transmis<br />\n");
@@ -64,13 +61,14 @@
 			return ("");
 	}
 
-	echo("<form method='post'>\n".
+	echo("<a href='admin.php'><input type='submit' value='Retourner a l accueil administrateur' /></a><br />\n".
+		"<form method='post'>\n".
 		"Nom:<br />\n".
-		"<input type='text' name='title' value='".$_SESSION[games][$_POST["key"]][name]."' /><br />\n".
+		"<input type='text' name='title' value='".$_SESSION[games][$_POST["key"]][name]."' required /><br />\n".
 		"Prix:<br />\n".
-		"<input type='number' name='price' value='".$_SESSION[games][$_POST["key"]][prix]."' /><br />\n".
+		"<input type='number' name='price' value='".$_SESSION[games][$_POST["key"]][prix]."' required /><br />\n".
 		"Image:<br />\n".
-		"<input type='text' name='link' value='".$_SESSION[games][$_POST["key"]][img]."' /><br />\n".
+		"<input type='text' name='link' value='".$_SESSION[games][$_POST["key"]][img]."' required /><br />\n".
 		"Type:<br />\n".
 		"<input type='checkbox' name='xbox' value='checked'".check($_SESSION[games][$_POST["key"]][type], "xbox")." />Xbox<br />\n".
 		"<input type='checkbox' name='ps4' value='checked'".check($_SESSION[games][$_POST["key"]][type], "ps4")." />PS4<br />\n".
@@ -83,7 +81,8 @@
 		"<input type='checkbox' name='plateforme' value='checked'".check($_SESSION[games][$_POST["key"]][cat], "plateforme")." />Plateforme<br />\n".
 		"<input type='checkbox' name='combat' value='checked'".check($_SESSION[games][$_POST["key"]][cat], "combat")." />Combat<br />\n".
 		"<input type='checkbox' name='divers' value='checked'".check($_SESSION[games][$_POST["key"]][cat], "divers")." />Divers<br />\n".
-		"<input type='hidden' name='key' value='$_POST[key]' />".
-		"<input type='submit' name='submit' value='OK' /><br />\n".
+		"<input type='hidden' name='key' value='$_POST[key]' />\n".
+		"<input type='submit' name='submit' value='MODIFIER' /><br />\n".
+		"<input type='submit' name='submit' value='SUPPRIMER' /><br />\n".
 		"</form>\n");
 ?>
