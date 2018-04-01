@@ -1,38 +1,48 @@
 <?php
 	session_start();
 
-	function	auth($login, $passwd)
+	function	auth($login)
 	{
-		if (!$_SESSION[accounts])
-			$_SESSION[accounts] = unserialize(file_get_contents("data/accounts"));
 		foreach ($_SESSION[accounts] as $key => $elem)
 		{
 			if ($elem[login] === $login)
-			{
-				if ($elem[passwd] === hash("sha512", $passwd))
-					return ($key);
-				header("Location: login.php?error=passwd&login=$login");
-				exit;
-			}
+				return ($key);
 		}
-		header("Location: login.php?error=login");
-		exit;
+		return (false);
 	}
 
-	if ($_POST[login] && $_POST[passwd] && $_POST[submit] === "VALIDER")
+	if (!$_SESSION[accounts])
+		$_SESSION[accounts] = unserialize(file_get_contents("data/accounts"));
+	$key = auth($_POST[login]);
+
+	if ($_POST[login] && $_POST[passwd] && $_POST[submit] === "VALIDER" && hash("sha512", $_POST[passwd]) === $_SESSION[accounts][$key][passwd])
 	{
-		$_SESSION[user_key] = auth($_POST[login], $_POST[passwd]);
+		$_SESSION[user_key] = $key;
 		header("Location: index.php");
 		exit;
 	}
 
-	if ($_GET[error] === "login")
+	if ($_POST[submit] === "VALIDER")
 	{
-		echo("<div class='wrongauth'>Wrong login</div><br />\n");
-	}
-	else if ($_GET[error] === "passwd")
-	{
-		echo("<div class='wrongauth'>Wrong password</div><br />\n");
+		echo("<div class='wrongauth'>\n");
+		if ($_POST[login] === "")
+		{
+			echo("No login<br />\n");
+		}
+		else if ($key === false)
+		{
+			echo("Login doesn't exist<br />\n");
+			$_POST[login] = NULL;
+		}
+		if ($_POST[passwd] === "")
+		{
+			echo("No password<br />\n");
+		}
+		else if ($_POST[login] !== "" && hash("sha512", $_POST[passwd]) !== $_SESSION[account][$key][passwd])
+		{
+			echo("Wrong password<br />\n");
+		}
+		echo("</div>\n");
 	}
 ?>
 <head>
@@ -45,11 +55,13 @@ Retourner a l'accueuil
 </div></a>
 <div class="login">
 <form method='post'>
-	Identifiant :<br />
-	<?php echo("<input type='text' name='login' value='$_GET[login]' />");?><br />
-	Mot de passe :<br />
-	<input type='password' name='passwd' /><p>
-	<input class="button"  type='submit' name='submit' value='VALIDER' /></p>
+<?php
+	echo("Identifiant :<br />\n".
+		"<input type='text' name='login' value='$_POST[login]' /><br />\n".
+		"Mot de passe :<br />\n".
+		"<input type='password' name='passwd' />\n".
+		"<p><input class='button'  type='submit' name='submit' value='VALIDER' /></p>\n");
+?>
 </form>
 </div>
 <a href="register.php">
