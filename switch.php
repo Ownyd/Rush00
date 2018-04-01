@@ -34,15 +34,15 @@ Categories :
 </div>
 <div class="scroller">
 <?php
-foreach($tab = unserialize(file_get_contents("data/games")) as $elem)
+foreach($tab = unserialize(file_get_contents("data/games")) as $key => $elem)
 {
 	if (array_search("switch", $elem["type"]) !== false)
 	{
-		echo("<div class='product'>".
+		echo("<a href='produit.php?name=$key'><div class='product'>".
 			"<img class='image' src='$elem[img]'>".
 			"<div class='middle'>".
 			"<div class='text'>$elem[prix]€</div>".
-			"</div>".
+			"</div></a>".
 			"<div class='namegame'>".
 			"$elem[name]");
 		foreach($elem["cat"] as $elem2)

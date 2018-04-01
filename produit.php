@@ -34,4 +34,19 @@ Categories :
 </div>
 </div>
 <div class="produit">
+<div class="boitier">
+<?php
+$tab = unserialize(file_get_contents("data/games"));
+	echo("<img src='".$tab[$_GET[name]][img]."'>");
+?>
+</div>
+<div class="description">
+<?php
+	echo(" Prix :".$tab[$_GET[name]][prix]." Euros<br />");
+	echo(" Categories :"); 
+	foreach($tab[$_GET[name]][cat] as $elem)
+	echo(" [".$elem."] ");
+	echo("<br /> Support : ".$tab[$_GET[name]][type][0]."<br />");
+?>
+</div>
 </div>
