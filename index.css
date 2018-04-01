@@ -41,6 +41,40 @@ div.product
 	position:relative;
 }
 
+div.login
+{
+	position:absolute;
+	width:150px;
+	height:150px;
+	left:40%;
+	text-align:left;
+	padding:5px;
+	background-color:white;
+	border-radius:15px;
+	border: 1px solid black;
+	font-size:20px;
+}
+div.createaccount
+{
+	position:absolute;
+	left:40%;
+	top:180px;
+	width:150px;
+	text-align:center;
+	padding:5px;
+	background-color:white;
+	border-radius:15px;
+	border: 1px solid black;
+	font-size:20px;
+}
+
+input.button
+{
+	margin-left:15px;
+	text-align:center;
+	font-size:25px;
+}
+
 div.scrollbar 
 {
 	border: 4px solid white;
