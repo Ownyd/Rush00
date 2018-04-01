@@ -28,7 +28,7 @@ echo("<a href='login.php'>".
 else
 {
 
-echo("<div id='account'> Bonjour, ".$_SESSION[accounts][$_SESSION[user_key]][login]." </div>");
+echo("<div id='account'> Bonjour, ".$_SESSION[accounts][$_SESSION[user_key]][login]." <br/><br /><br /> <a href='logout.php'>Se deconnecter</div></a>");
 
 }
 ?>
