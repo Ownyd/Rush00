@@ -1,7 +1,3 @@
-<?php
-	session_start();
-?>
-
 <html>
 	<head>
 		<title>Index</title>
@@ -34,7 +30,7 @@ Categories :
 </div> <br />
 <div id="support">
 	<a href="categorie.php?support=switch"><img id="mini" src="resources/support/switch_icon.png">
-<br />NINTENDO SWITCH</a>   
+<br />NINTENDO SWITCH</a>
 </div>  <br />
 Trier par type :<br />
 <a href="categorie.php?cat=fps">
@@ -72,26 +68,48 @@ Sport<br />
 Divers
 </a>
 </div>
-
-
-
 </div>
 </div>
-<div class="scrollbar">
+<div class="scroller">
 <?php
-foreach($tab = unserialize(file_get_contents("data/games")) as $key => $elem)
-	echo("<a href='produit.php?name=$key'><img class='miniature' src='$elem[img]'></a>");
+if ($_GET[support] !== "")
+	foreach($tab = unserialize(file_get_contents("data/games")) as $key => $elem)
+	{
+		if (array_search($_GET[support], $elem["type"]) !== false)
+		{
+			echo("<a href='produit.php?name=$key'><div class='product'>".
+				"<img class='image' src='$elem[img]'>".
+				"<div class='middle'>".
+				"<div class='text'>$elem[prix]€</div>".
+				"</div></a>".
+				"<div class='namegame'>".
+				"$elem[name]");
+			foreach($elem["cat"] as $elem2)
+				echo(" ($elem2) ");
+			echo("</div></div>");
+
+		}
+	}
+if ($_GET[cat] !== "")
+	foreach($tab = unserialize(file_get_contents("data/games")) as $key => $elem)
+	{
+		if (array_search($_GET[cat], $elem["cat"]) !== false)
+		{
+			echo("<a href='produit.php?name=$key'><div class='product'>".
+				"<img class='image' src='$elem[img]'>".
+				"<div class='middle'>".
+				"<div class='text'>$elem[prix]€</div>".
+				"</div></a>".
+				"<div class='namegame'>".
+				"$elem[name]");
+			foreach($elem["cat"] as $elem2)
+				echo(" ($elem2) ");
+			echo("</div></div>");
+
+		}
+	}
+
 ?>
 </div>
-<div id="slider">
-  <figure>
-    <img src="https://emagtrends.com/wp-content/uploads/2018/01/dragon-ball-fighterz.jpg" alt>
-    <img src="http://i0.kym-cdn.com/entries/icons/original/000/015/797/splatoon0522151280jpg-b0aaa2_1280w.jpg" alt>
-    <img src="http://www.daddydaydream.com/wp-content/uploads/2018/03/3350293-em4r8vzw2ba01.jpg" alt>
-    <img src="https://i.ytimg.com/vi/mmoEA0ZS4R4/maxresdefault.jpg" alt>
-    <img src="https://emagtrends.com/wp-content/uploads/2018/01/dragon-ball-fighterz.jpg" alt>
-  </figure>
-</div>
 
-<div class="footer"><font face="Georgia">Conditions générales de vente<br />Vos informations personnelles<br />    Cookies et Publicité sur Internet<br />    ©2018 tlux,gearcenc </font>
 </html>

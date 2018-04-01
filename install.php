@@ -43,7 +43,7 @@ array(cat => ["action"], name => "Zelda Breathe of the Wild", img => "resources/
 array(cat => ["sport"], name => "Just dance 2018", img => "resources/games/switch/2.jpeg", prix => "45.99", type => ["switch"]),
 array(cat => ["divers"], name => "Monopoly", img => "resources/games/switch/3.jpeg", prix => "39.99", type => ["switch"]),
 array(cat => ["fps"], name => "Splatoon 2", img => "resources/games/switch/4.jpeg", prix => "32.99", type => ["switch"]),
-array(cat => ["plateforme"], name => "Minecraft", img => "resources/games/switch/5.jpeg", prix => "27.99", type => ["switch"]),
+array(cat => ["plateforme", "survie"], name => "Minecraft", img => "resources/games/switch/5.jpeg", prix => "27.99", type => ["switch"]),
 array(cat => ["action"], name => "Super Mario Odyssey", img => "resources/games/switch/6.jpeg", prix => "57.99", type => ["switch"]),
 array(cat => ["fps"], name => "Arms", img => "resources/games/switch/7.jpeg", prix => "44.99", type => ["switch"]),
 array(cat => ["divers"], name => "1 2 Switch", img => "resources/games/switch/8.jpeg", prix => "18.99", type => ["switch"]),
